@@ -7,10 +7,12 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @Component
+@EnableCaching
 public class SpringjpatestsApplication implements ApplicationRunner {
 
 	@Autowired
@@ -23,7 +25,4 @@ public class SpringjpatestsApplication implements ApplicationRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringjpatestsApplication.class, args);
 	}
-
-
-
 }
