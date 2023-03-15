@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,10 +12,18 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class MyConfig {
 
+    public MyConfig(Long id, String value) {
+        this.id = id;
+        this.value = value;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String value;
+
+    @Transient
+    public int cacheMark;
 
 }
