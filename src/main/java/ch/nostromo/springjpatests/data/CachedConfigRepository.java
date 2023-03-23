@@ -1,6 +1,7 @@
 package ch.nostromo.springjpatests.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,9 @@ public class CachedConfigRepository implements ConfigRepository {
     @Autowired
     private MyConfigRepository myConfigRepository;
 
+    @Value("${masterdata.karenzfrist}")
+    private String karenzFrist;
+
     private int cacheCallCounter = 0;
     private int noCacheCallCounter = 0;
 
@@ -23,6 +27,7 @@ public class CachedConfigRepository implements ConfigRepository {
         cacheCallCounter += 1;
         Optional<MyConfig> byId = myConfigRepository.findById(id);
         byId.get().cacheMark = cacheCallCounter;
+        byId.get().karenzFrist = karenzFrist;
         return byId;
     }
 
@@ -32,6 +37,7 @@ public class CachedConfigRepository implements ConfigRepository {
         noCacheCallCounter += 1;
         Optional<MyConfig> byId = myConfigRepository.findById(id);
         byId.get().cacheMark = noCacheCallCounter;
+        byId.get().karenzFrist = karenzFrist;
         return byId;
     }
 

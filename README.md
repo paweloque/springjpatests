@@ -10,5 +10,3 @@ Start PG and PG-Admin in docker:
 ```
 $ docker-compose -f dockerpg/docker-compose.yml uo   
 ```
-
-

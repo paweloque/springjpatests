@@ -26,4 +26,7 @@ public class MyConfig {
     @Transient
     public int cacheMark;
 
+    @Transient
+    public String karenzFrist;
+
 }
